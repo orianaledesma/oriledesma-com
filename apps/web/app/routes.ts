@@ -10,5 +10,6 @@ export default [
     route("vivos", "routes/lives.tsx"),
     route("aprende", "routes/learn.tsx"),
     route("en-publico", "routes/public-numbers.tsx"),
+    route("guia", "routes/guide.tsx"),
   ]),
 ] satisfies RouteConfig;
