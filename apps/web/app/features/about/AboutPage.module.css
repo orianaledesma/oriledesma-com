@@ -1,0 +1,16 @@
+.subtitle {
+  margin-top: var(--space-l);
+}
+
+.symbol {
+  width: 120px;
+  margin: 0 auto 20px;
+}
+
+.signature {
+  font-size: 1.6rem;
+}
+
+.actions {
+  justify-content: center;
+}
