@@ -11,6 +11,7 @@ import {
 } from "react-router";
 import type { Route } from "./+types/root";
 import { SITE } from "./config/site";
+import { AnalyticsProvider } from "./features/analytics/AnalyticsProvider";
 import { QueryProvider } from "./shared/api/query-client";
 import { LANGUAGE_TAGS, LocaleProvider, localeFromPath } from "./i18n";
 import "./styles/index.css";
@@ -44,7 +45,9 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function App() {
   return (
     <QueryProvider>
-      <Outlet />
+      <AnalyticsProvider>
+        <Outlet />
+      </AnalyticsProvider>
     </QueryProvider>
   );
 }
