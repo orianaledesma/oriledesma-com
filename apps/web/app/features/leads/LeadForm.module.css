@@ -1,0 +1,47 @@
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form > *,
+.fields > * {
+  min-width: 0;
+}
+
+/* El fieldset deshabilita todo el formulario de una vez sin romper la grilla */
+.fields {
+  display: contents;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .twoCol {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+/* Newsletter del footer: email + botón en una línea */
+.inline {
+  gap: 10px;
+}
+
+.inlineRow {
+  display: flex;
+  gap: 8px;
+}
+
+.inlineRow > :first-child {
+  flex: 1;
+}
+
+.inlineRow button {
+  padding-inline: 18px;
+}
