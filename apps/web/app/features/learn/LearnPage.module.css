@@ -1,0 +1,28 @@
+.count {
+  margin-bottom: 18px;
+  color: var(--color-pizarra);
+  font-weight: 600;
+}
+
+.empty {
+  padding: 36px;
+  border-radius: var(--radius);
+  background: var(--color-blanco);
+  text-align: center;
+}
+
+.format {
+  margin-bottom: 6px;
+  color: var(--color-pizarra);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.summary {
+  color: var(--color-pizarra);
+  font-size: 1rem;
+}
+
+.pendingLink {
+  font-weight: 600;
+}
