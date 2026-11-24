@@ -1,0 +1,35 @@
+.agenda {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  gap: 6px 20px;
+  align-items: center;
+  padding: 20px 24px;
+  border-radius: var(--radius-sm);
+  background: var(--color-blanco);
+  box-shadow: var(--shadow-soft);
+}
+
+.item > * {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .item {
+    grid-template-columns: 150px 1fr auto;
+  }
+}
+
+.date {
+  font-weight: 700;
+}
+
+.detail {
+  color: var(--color-pizarra);
+}
