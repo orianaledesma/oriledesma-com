@@ -1,0 +1,14 @@
+# Las URLs de la maqueta (.html) siguen funcionando con 301 a las nuevas.
+/index.html               /                    301
+/curso.html               /curso               301
+/talleres.html            /talleres            301
+/implementacion.html      /implementacion      301
+/en/implementation.html   /en/implementation   301
+/vivos.html               /vivos               301
+/aprende.html             /aprende             301
+/en-publico.html          /en-publico          301
+/guia.html                /guia                301
+/sobre-mi.html            /sobre-mi            301
+/links.html               /links               301
+/privacidad.html          /privacidad          301
+/terminos.html            /terminos            301
