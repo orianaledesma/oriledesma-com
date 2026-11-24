@@ -15,8 +15,10 @@ type Props = {
 
 /** Miniatura estilo "Noche, una palabra" (placeholder hasta integrar YouTube). */
 export function VideoThumb({ word, note, size = "md", href, label, showPlay = true }: Props) {
+  // El nombre accesible va como texto (no aria-label): así coincide con lo visible (WCAG 2.5.3).
   const content = (
     <>
+      <span className="sr-only">{label}</span>
       <span className={styles.word} aria-hidden="true">
         {word}
         <b>.</b>
@@ -41,14 +43,13 @@ export function VideoThumb({ word, note, size = "md", href, label, showPlay = tr
       href={href}
       target="_blank"
       rel="noopener"
-      aria-label={label}
       data-surface="noche"
       data-stars
     >
       {content}
     </a>
   ) : (
-    <div className={className} role="img" aria-label={label} data-surface="noche" data-stars>
+    <div className={className} data-surface="noche" data-stars>
       {content}
     </div>
   );
