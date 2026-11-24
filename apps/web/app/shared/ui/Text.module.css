@@ -1,0 +1,76 @@
+.pill {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--c-pill-bg);
+  color: var(--c-pill-fg);
+  font-weight: 600;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.block {
+  display: table;
+}
+
+.accent {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0 0.14em 0.04em;
+  border-radius: 0.14em;
+  background: var(--c-accent-bg);
+  color: var(--c-accent-fg);
+  line-height: 1.02;
+  box-decoration-break: clone;
+}
+
+.pending {
+  padding: 1px 8px;
+  border: 1px dashed var(--c-pending-border);
+  border-radius: 6px;
+  background: var(--c-pending-bg);
+  color: var(--c-pending-fg);
+  font-family: var(--font-system);
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+:is(h1, h2) .pending {
+  font-size: 0.5em;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+.lead {
+  max-width: 660px;
+  color: var(--c-fg-muted);
+  font-size: var(--font-size-lead);
+}
+
+:global([data-surface="celeste"]) .lead {
+  color: var(--c-fg);
+}
+
+.muted {
+  color: var(--c-fg-muted);
+}
+
+.signature {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.spaced {
+  margin-top: var(--space-l);
+}
+
+.legal {
+  margin: 0;
+  color: var(--c-fg-muted);
+  font-size: var(--font-size-small);
+}
