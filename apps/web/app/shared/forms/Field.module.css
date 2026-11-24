@@ -1,0 +1,59 @@
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.hint {
+  color: var(--c-fg-muted);
+  font-size: 0.9rem;
+}
+
+.control {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 2px solid var(--c-input-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-input-bg);
+  color: var(--c-input-fg);
+  font: 400 1rem/1.4 var(--font-sans);
+}
+
+.control::placeholder {
+  color: var(--c-fg-muted);
+}
+
+.control:hover {
+  border-color: var(--color-borde-fuerte);
+}
+
+.control:focus-visible {
+  outline: 3px solid var(--color-celeste);
+  outline-offset: 0;
+  border-color: var(--color-marino);
+}
+
+.control[aria-invalid="true"] {
+  border-color: var(--c-error);
+}
+
+textarea.control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error {
+  color: var(--c-error);
+  font-size: 0.92rem;
+  font-weight: 600;
+}

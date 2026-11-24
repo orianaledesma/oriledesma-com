@@ -1,0 +1,17 @@
+.success {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--color-celeste);
+  color: var(--color-marino);
+  font-weight: 600;
+}
+
+.error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--c-error);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
