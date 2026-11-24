@@ -5,7 +5,7 @@ import styles from "./Highlight.module.css";
 type Props = {
   /** `light`: bloque blanco. `noche`: bloque Marino con estrellas. */
   tone?: "light" | "noche";
-  /** Sin sombra, con filete (para usarlo dentro de un hero). */
+  /** Sin sombra (para usarlo dentro de un hero). */
   flat?: boolean;
   className?: string | undefined;
   children: ReactNode;

@@ -37,7 +37,7 @@
   box-shadow: var(--shadow);
 }
 
-.flat {
-  border: 1px solid var(--color-borde);
+/* Más específico que la sombra por superficie: dentro de un hero va plano */
+.highlight.flat {
   box-shadow: none;
 }
