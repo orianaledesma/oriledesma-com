@@ -4,6 +4,7 @@ import {
   type BusinessCategory,
   liveApplication,
 } from "@oriledesma/schemas";
+import { track } from "~/features/analytics/analytics";
 import { Field, Select, TextArea, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
 import { cx } from "~/shared/lib/cx";
@@ -21,7 +22,13 @@ const CATEGORY_LABELS: Record<BusinessCategory, string> = {
 };
 
 export function LiveApplicationForm() {
-  const form = useLeadForm({ schema: liveApplication, endpoint: API_ROUTES.liveApplications });
+  const form = useLeadForm({
+    schema: liveApplication,
+    endpoint: API_ROUTES.liveApplications,
+    onSuccess: ({ rubro }) => {
+      track({ name: "live_application_submit", params: { rubro } });
+    },
+  });
   const clear = (name: string) => () => {
     form.clearError(name);
   };

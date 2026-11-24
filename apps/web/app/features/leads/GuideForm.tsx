@@ -1,4 +1,5 @@
 import { API_ROUTES, guideRequest, type LeadSource } from "@oriledesma/schemas";
+import { track } from "~/features/analytics/analytics";
 import { Field, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
 import { cx } from "~/shared/lib/cx";
@@ -8,7 +9,14 @@ import { useLeadForm } from "./useLeadForm";
 
 /** Alta a la guía "Tus primeros 7 días con IA" (solo en español, como la guía). */
 export function GuideForm({ source }: { source: LeadSource }) {
-  const form = useLeadForm({ schema: guideRequest, endpoint: API_ROUTES.guide, extra: { source } });
+  const form = useLeadForm({
+    schema: guideRequest,
+    endpoint: API_ROUTES.guide,
+    extra: { source },
+    onSuccess: () => {
+      track({ name: "email_capture_submit", params: { source } });
+    },
+  });
 
   return (
     <form

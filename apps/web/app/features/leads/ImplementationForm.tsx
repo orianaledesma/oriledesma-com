@@ -1,5 +1,6 @@
 import { API_ROUTES, IMPLEMENTATION_TIMEFRAMES, implementationInquiry } from "@oriledesma/schemas";
 import { useLocale } from "~/i18n";
+import { track } from "~/features/analytics/analytics";
 import { Field, Select, TextArea, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
 import { cx } from "~/shared/lib/cx";
@@ -15,6 +16,9 @@ export function ImplementationForm() {
     schema: implementationInquiry,
     endpoint: API_ROUTES.implementation,
     extra: { locale },
+    onSuccess: () => {
+      track({ name: "contact_form_submit", params: { locale } });
+    },
   });
   const clear = (name: string) => () => {
     form.clearError(name);

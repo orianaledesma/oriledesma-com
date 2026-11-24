@@ -1,5 +1,6 @@
 import { API_ROUTES, type LeadSource, newsletterSubscription } from "@oriledesma/schemas";
 import { useT } from "~/i18n";
+import { track } from "~/features/analytics/analytics";
 import { Field, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
 import { cx } from "~/shared/lib/cx";
@@ -14,6 +15,9 @@ export function NewsletterForm({ source }: { source: LeadSource }) {
     schema: newsletterSubscription,
     endpoint: API_ROUTES.newsletter,
     extra: { source },
+    onSuccess: () => {
+      track({ name: "email_capture_submit", params: { source } });
+    },
   });
 
   return (

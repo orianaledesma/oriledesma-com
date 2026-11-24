@@ -10,7 +10,8 @@ type Options<S extends z.ZodType> = {
   endpoint: string;
   /** Campos que no vienen del formulario (origen, idioma). */
   extra?: Record<string, string>;
-  onSuccess?: () => void;
+  /** Recibe lo que se envió (ya validado), p. ej. para analytics. */
+  onSuccess?: (payload: z.output<S>) => void;
 };
 
 const formValues = (form: HTMLFormElement): Record<string, string> => {
@@ -37,8 +38,8 @@ export function useLeadForm<S extends z.ZodType>({
 
   const mutation = useMutation({
     mutationFn: (payload: z.output<S>) => postJson<{ ok: true }>(endpoint, payload),
-    onSuccess: () => {
-      onSuccess?.();
+    onSuccess: (_data, payload) => {
+      onSuccess?.(payload);
     },
     onError: (error) => {
       if (error instanceof ApiRequestError && error.failure.kind === "validation") {
