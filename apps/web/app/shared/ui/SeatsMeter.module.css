@@ -1,0 +1,29 @@
+.meter {
+  margin: 22px 0 6px;
+}
+
+.meter > p:first-child {
+  margin-bottom: 0;
+}
+
+.track {
+  overflow: hidden;
+  height: 12px;
+  margin-top: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-niebla);
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-celeste);
+  transition: width 0.4s ease;
+}
+
+.label {
+  margin-top: 8px;
+  color: var(--c-fg-muted);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
