@@ -29,8 +29,10 @@ export const SISTER_BRANDS = {
 export const COURSE = {
   name: "Cómo crear una marca entera con IA",
   priceUsd: 149,
-  /** Cupos de la primera cohorte. El número vendido lo da la API. */
+  /** Cupos de la primera cohorte. */
   seats: 20,
+  /** Lugares vendidos. Sin back se actualiza a mano acá; con la API, el dato lo da la API. */
+  seatsSold: 0,
   lessons: 7,
 } as const;
 
