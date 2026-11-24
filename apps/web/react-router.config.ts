@@ -5,5 +5,8 @@ export default {
   // Sitio de marketing: todo se genera como HTML estático en el build (SSG).
   // Si la plataforma de cursos necesita SSR, alcanza con pasar a `ssr: true`.
   ssr: false,
-  prerender: true,
+  prerender({ getStaticPaths }) {
+    // Las rutas estáticas + /404 (la ruta comodín no se descubre sola).
+    return [...getStaticPaths(), "/404"];
+  },
 } satisfies Config;
