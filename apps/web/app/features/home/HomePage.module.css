@@ -1,0 +1,70 @@
+.heroLogo {
+  width: 220px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 899px) {
+  .heroLogo {
+    display: none;
+  }
+}
+
+.spacedSplit {
+  margin-bottom: var(--space-xl);
+}
+
+.flush {
+  margin: 0;
+}
+
+.video {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+.video > * {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .video {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+  }
+}
+
+.spaced {
+  margin-top: var(--space-l);
+}
+
+.legalSpaced {
+  margin-top: 12px;
+}
+
+.aboutPhoto {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.quote {
+  margin: 4px 0 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+}
+
+.quote::before {
+  content: "“";
+}
+
+.quote::after {
+  content: "”";
+}
+
+.detail {
+  color: var(--c-fg-muted);
+  font-size: 1rem;
+}
