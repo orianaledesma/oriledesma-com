@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+coverage
+.react-router
+package-lock.json
+playwright-report
+test-results
