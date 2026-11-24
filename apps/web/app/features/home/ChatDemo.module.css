@@ -1,0 +1,65 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: #efe7dd;
+}
+
+.chat p {
+  max-width: 80%;
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+  color: #111b21;
+  font-size: 1.02rem;
+}
+
+.customer {
+  align-self: flex-start;
+  background: var(--color-blanco);
+}
+
+.business {
+  align-self: flex-end;
+  background: #d9fdd3;
+}
+
+.panelWindow {
+  max-width: 440px;
+}
+
+.panelTitle {
+  padding: 14px 20px 6px;
+  color: var(--color-celeste-hondo);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.panelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--color-borde);
+  font-weight: 500;
+}
+
+.status,
+.statusBusy {
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-celeste);
+  color: var(--color-marino);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusBusy {
+  background: var(--color-niebla);
+}
