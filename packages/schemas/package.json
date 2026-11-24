@@ -1,0 +1,20 @@
+{
+  "name": "@oriledesma/schemas",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Contratos compartidos (Zod) entre la web y la API.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.1"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  }
+}
