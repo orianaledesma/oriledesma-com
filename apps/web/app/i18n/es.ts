@@ -1,0 +1,58 @@
+import type { Dictionary } from "./types";
+
+export const es: Dictionary = {
+  skipToContent: "Saltar al contenido",
+  logoHomeLabel: "Ori Ledesma, IA para negocios: ir al inicio",
+  logoAlt: "Ori Ledesma · IA para negocios",
+  menu: "Menú",
+  nav: {
+    label: "Principal",
+    course: "Curso",
+    lives: "Vivos",
+    workshops: "Talleres",
+    implementation: "Implementación",
+    learn: "Aprendé",
+    about: "Sobre mí",
+    guide: "Guía gratis",
+    publicNumbers: "En público",
+  },
+  footer: {
+    label: "Pie de página",
+    promise: "Lo que la IA puede hacer por tu negocio, probado primero en el mío.",
+    signature: "Yo lo pruebo, vos lo aplicás.",
+    site: "El sitio",
+    social: "Redes",
+    contact: "Contacto",
+    newsletter: "Newsletter",
+    newsletterPitch: "Lo que pruebo cada semana, con los números. Un email, sin vueltas.",
+    sisterBrands: {
+      prefix: "De los creadores de",
+      exploriando: "(viajes en español)",
+      latina: "(español y cultura latina, en inglés).",
+      and: "y",
+    },
+    privacy: "Privacidad",
+    terms: "Términos",
+    copyright: (year) => `© ${year} Ori Ledesma`,
+  },
+  forms: {
+    errors: {
+      required: "Completá este campo.",
+      invalid_email: "Revisá el email: parece que le falta algo.",
+      too_long: "Es demasiado largo. Resumilo un poco.",
+      invalid_option: "Elegí una opción de la lista.",
+    },
+    summary: "Revisá los campos marcados: faltan datos o el email no es válido.",
+    network: "No pudimos conectarnos. Revisá tu conexión y probá de nuevo.",
+    rateLimited: "Recibimos muchos envíos seguidos. Esperá un minuto y probá de nuevo.",
+    unknown: "Algo falló de nuestro lado. Probá de nuevo en un rato.",
+    sending: "Enviando…",
+    unsubscribe: "Podés darte de baja cuando quieras.",
+  },
+  newsletter: {
+    emailLabel: "Tu email",
+    placeholder: "tu@email.com",
+    submit: "Sumarme",
+    success: "¡Listo! Te sumaste a la newsletter.",
+  },
+};

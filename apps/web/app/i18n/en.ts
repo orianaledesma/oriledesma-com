@@ -1,0 +1,58 @@
+import type { Dictionary } from "./types";
+
+export const en: Dictionary = {
+  skipToContent: "Skip to content",
+  logoHomeLabel: "Ori Ledesma, AI for business: go to the home page",
+  logoAlt: "Ori Ledesma · AI for business",
+  menu: "Menu",
+  nav: {
+    label: "Main",
+    course: "Course",
+    lives: "Live sessions",
+    workshops: "Workshops",
+    implementation: "Implementation",
+    learn: "Learn",
+    about: "About me",
+    guide: "Free guide",
+    publicNumbers: "In public",
+  },
+  footer: {
+    label: "Footer",
+    promise: "What AI can do for your business, tested in mine first.",
+    signature: "I test it, you apply it.",
+    site: "The site",
+    social: "Social",
+    contact: "Contact",
+    newsletter: "Newsletter",
+    newsletterPitch: "What I test every week, with the numbers. One email, straight to the point.",
+    sisterBrands: {
+      prefix: "From the creators of",
+      exploriando: "(travel, in Spanish)",
+      latina: "(Spanish and Latin culture, in English).",
+      and: "and",
+    },
+    privacy: "Privacy",
+    terms: "Terms",
+    copyright: (year) => `© ${year} Ori Ledesma`,
+  },
+  forms: {
+    errors: {
+      required: "Please fill in this field.",
+      invalid_email: "Please check the email address.",
+      too_long: "That's too long. Please shorten it a bit.",
+      invalid_option: "Please choose an option from the list.",
+    },
+    summary: "Please check the highlighted fields: something is missing or the email isn't valid.",
+    network: "We couldn't connect. Check your connection and try again.",
+    rateLimited: "We got too many submissions in a row. Wait a minute and try again.",
+    unknown: "Something went wrong on our side. Please try again later.",
+    sending: "Sending…",
+    unsubscribe: "You can unsubscribe at any time.",
+  },
+  newsletter: {
+    emailLabel: "Your email",
+    placeholder: "you@email.com",
+    submit: "Subscribe",
+    success: "Done! You're on the newsletter.",
+  },
+};
