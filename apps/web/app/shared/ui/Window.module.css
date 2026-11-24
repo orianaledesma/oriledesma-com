@@ -1,0 +1,58 @@
+.window {
+  justify-self: center;
+  width: 100%;
+  max-width: 460px;
+  margin: 0;
+  padding: 0 12px 12px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.marino {
+  background: var(--color-marino);
+}
+
+.celeste {
+  background: var(--color-celeste);
+}
+
+.tilted {
+  transform: rotate(-3deg);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+}
+
+.bar span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.5);
+}
+
+.marino .bar span:last-child {
+  background: var(--color-celeste);
+}
+
+.celeste .bar span:last-child {
+  background: var(--color-marino);
+}
+
+.screen {
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-blanco);
+  color: var(--color-marino);
+}
+
+.caption {
+  margin: 0;
+  padding: 8px 14px;
+  background: var(--color-blanco);
+  color: var(--color-pizarra);
+  font-size: 0.8rem;
+}
