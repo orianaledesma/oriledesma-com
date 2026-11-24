@@ -1,0 +1,44 @@
+# Render Blueprint de la API (render.com → New → Blueprint → este repo).
+services:
+  - type: web
+    name: oriledesma-api
+    runtime: node
+    region: frankfurt
+    plan: starter
+    branch: main
+    # Se instalan también devDependencies: el build usa tsup.
+    buildCommand: npm ci --include=dev && npm run build -w @oriledesma/api
+    startCommand: npm start -w @oriledesma/api
+    healthCheckPath: /health
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - apps/api/**
+        - packages/schemas/**
+        - package-lock.json
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: CORS_ORIGINS
+        value: https://oriledesma.com,https://www.oriledesma.com
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: COURSE_SEATS_TOTAL
+        value: "20"
+      - key: COURSE_SEATS_SOLD
+        value: "0"
+      # Secretos: se cargan a mano en el dashboard de Render (sync: false = no viven en el repo).
+      - key: MAILERLITE_API_KEY
+        sync: false
+      - key: MAILERLITE_GROUP_NEWSLETTER
+        sync: false
+      - key: MAILERLITE_GROUP_GUIDE
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: NOTIFY_TO
+        value: oriledesmaia@gmail.com
