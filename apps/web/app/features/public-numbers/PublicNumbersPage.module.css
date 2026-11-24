@@ -1,0 +1,28 @@
+.days {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.alertLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  color: var(--color-alerta);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.alertLabel svg {
+  width: 16px;
+  height: 16px;
+}
+
+.learning {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-borde);
+  font-size: 1rem;
+}
