@@ -1,0 +1,21 @@
+.format {
+  gap: 48px;
+  align-items: start;
+}
+
+.empty {
+  padding: 44px 24px;
+  border: 2px dashed var(--color-borde-fuerte);
+  border-radius: var(--radius);
+  background: var(--color-blanco);
+  color: var(--color-pizarra);
+  text-align: center;
+}
+
+.empty p {
+  margin: 0;
+}
+
+.legal {
+  margin-top: 12px;
+}
