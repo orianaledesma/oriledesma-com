@@ -1,0 +1,160 @@
+.page {
+  min-height: 100vh;
+}
+
+.links {
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 48px 20px 40px;
+  color: var(--color-marino);
+  text-align: center;
+}
+
+.avatar {
+  width: 116px;
+  height: 116px;
+  margin: 0 auto 18px;
+}
+
+.name {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+.sub {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-marino);
+  color: var(--color-blanco);
+  font-weight: 600;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.promise {
+  margin-bottom: 28px;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.highlights a {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: var(--color-marino);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.circle {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  transition: transform var(--duration-fast);
+}
+
+.circle img {
+  width: 60%;
+}
+
+.highlights a:hover .circle {
+  transform: scale(1.05);
+}
+
+.marino {
+  background: var(--color-marino);
+  box-shadow: 0 0 0 3px var(--color-blanco);
+}
+
+.blanco {
+  background: var(--color-blanco);
+  box-shadow: 0 0 0 3px var(--color-marino);
+}
+
+.celeste {
+  background: var(--color-celeste);
+  box-shadow:
+    0 0 0 3px var(--color-blanco),
+    0 0 0 4px var(--color-marino);
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--color-blanco);
+  box-shadow: 0 6px 18px rgb(27 42 74 / 0.12);
+  color: var(--color-marino);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition:
+    transform var(--duration-fast),
+    background var(--duration-fast);
+}
+
+.button:hover {
+  background: var(--color-marino);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+}
+
+.primary {
+  background: var(--color-marino);
+  color: var(--color-blanco);
+}
+
+.primary:hover {
+  background: var(--color-marino-claro);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin-bottom: 24px;
+}
+
+.socials a,
+.home a {
+  color: var(--color-marino);
+  font-weight: 600;
+}
+
+.signature {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.home {
+  margin: 0;
+  font-size: var(--font-size-small);
+}
