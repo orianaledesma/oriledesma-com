@@ -5,5 +5,7 @@ export default [
     index("routes/home.tsx"),
     route("curso", "routes/course.tsx"),
     route("talleres", "routes/workshops.tsx"),
+    route("implementacion", "routes/implementation.tsx"),
+    route("en/implementation", "routes/implementation.en.tsx"),
   ]),
 ] satisfies RouteConfig;
