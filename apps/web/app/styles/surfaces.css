@@ -1,0 +1,154 @@
+/* ==========================================================
+   Superficies · tokens semánticos según el fondo.
+   Cada sección declara data-surface y los componentes solo
+   leen --c-*: un botón se adapta solo a Noche o a Celeste,
+   sin selectores del tipo ".oscuro .btn".
+   ========================================================== */
+
+/* Contenido claro: la base, y también tarjetas y bloques sobre cualquier fondo ("raised") */
+:root,
+[data-surface="niebla"],
+[data-surface="blanca"],
+[data-surface="raised"] {
+  --c-fg: var(--color-marino);
+  --c-fg-muted: var(--color-pizarra);
+  --c-link: var(--color-celeste-hondo);
+  --c-link-hover: var(--color-marino);
+  --c-focus: var(--color-celeste-hondo);
+
+  --c-pill-bg: var(--color-celeste);
+  --c-pill-fg: var(--color-marino);
+  --c-accent-bg: var(--color-miel);
+  --c-accent-fg: var(--color-marino);
+
+  --c-btn-bg: var(--color-marino);
+  --c-btn-fg: var(--color-blanco);
+  --c-btn-hover-bg: var(--color-marino-claro);
+  --c-btn-hover-fg: var(--color-blanco);
+  --c-btn2-fg: var(--color-marino);
+  --c-btn2-border: var(--color-marino);
+  --c-btn2-hover-bg: var(--color-marino);
+  --c-btn2-hover-fg: var(--color-blanco);
+
+  --c-icon-bg: var(--color-celeste);
+  --c-icon-fg: var(--color-marino);
+  --c-rule: var(--color-borde);
+  --c-label: var(--color-pizarra);
+
+  --c-pending-fg: var(--color-pizarra);
+  --c-pending-bg: var(--color-niebla);
+  --c-pending-border: var(--color-borde-fuerte);
+
+  --c-input-bg: var(--color-blanco);
+  --c-input-fg: var(--color-marino);
+  --c-input-border: var(--color-borde);
+  --c-error: var(--color-alerta);
+}
+
+/* Fondos de sección. Las tarjetas ("raised") toman --c-raised-* del fondo que las contiene. */
+[data-surface="niebla"] {
+  --c-bg: var(--color-niebla);
+  --c-raised-bg: var(--color-blanco);
+  --c-raised-shadow: var(--shadow-soft);
+  --c-raised-border: transparent;
+}
+
+[data-surface="blanca"] {
+  --c-bg: var(--color-blanco);
+  --c-raised-bg: var(--color-niebla);
+  --c-raised-shadow: none;
+  --c-raised-border: var(--color-borde);
+}
+
+[data-surface="celeste"] {
+  --c-bg: var(--color-celeste);
+  --c-fg: var(--color-marino);
+  --c-fg-muted: var(--color-marino);
+  --c-link: var(--color-marino);
+  --c-link-hover: var(--color-marino);
+  --c-focus: var(--color-marino);
+  --c-pill-bg: var(--color-marino);
+  --c-pill-fg: var(--color-blanco);
+  /* Sobre Celeste nunca va Miel: la píldora de acento es Marino */
+  --c-accent-bg: var(--color-marino);
+  --c-accent-fg: var(--color-blanco);
+  --c-pending-fg: var(--color-marino);
+  --c-pending-bg: rgb(255 255 255 / 0.55);
+  --c-pending-border: rgb(27 42 74 / 0.4);
+  --c-raised-bg: var(--color-blanco);
+  --c-raised-shadow: none;
+  --c-raised-border: transparent;
+}
+
+[data-surface="noche"] {
+  --c-bg: var(--color-marino);
+  --c-bg-image: var(--gradient-noche);
+  --c-fg: var(--color-blanco);
+  --c-fg-muted: rgb(255 255 255 / 0.86);
+  --c-link: var(--color-celeste);
+  --c-link-hover: var(--color-blanco);
+  --c-focus: var(--color-celeste);
+  --c-pill-bg: var(--color-celeste);
+  --c-pill-fg: var(--color-marino);
+  --c-btn-bg: var(--color-celeste);
+  --c-btn-fg: var(--color-marino);
+  --c-btn-hover-bg: var(--color-blanco);
+  --c-btn-hover-fg: var(--color-marino);
+  --c-btn2-fg: var(--color-blanco);
+  --c-btn2-border: var(--color-blanco);
+  --c-btn2-hover-bg: var(--color-blanco);
+  --c-btn2-hover-fg: var(--color-marino);
+  --c-icon-bg: rgb(0 207 250 / 0.15);
+  --c-icon-fg: var(--color-celeste);
+  --c-rule: var(--color-noche-borde);
+  --c-label: var(--color-celeste);
+  --c-pending-fg: var(--color-blanco);
+  --c-pending-bg: rgb(255 255 255 / 0.08);
+  --c-pending-border: rgb(255 255 255 / 0.35);
+  --c-input-bg: rgb(255 255 255 / 0.06);
+  --c-input-fg: var(--color-blanco);
+  --c-input-border: rgb(255 255 255 / 0.4);
+  --c-error: var(--color-miel);
+  --c-raised-bg: var(--color-blanco);
+  --c-raised-shadow: var(--shadow);
+  --c-raised-border: transparent;
+}
+
+/* Toda superficie de sección pinta su fondo y su texto */
+[data-surface]:not([data-surface="raised"]) {
+  background-color: var(--c-bg);
+  background-image: var(--c-bg-image, none);
+  color: var(--c-fg);
+}
+
+[data-surface="raised"] {
+  color: var(--c-fg);
+}
+
+/* Estrellas de la miniatura "Noche": decoración pura, detrás del contenido */
+[data-stars] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-stars]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(2px 2px at 8% 14%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 22% 70%, #fff 50%, transparent 51%),
+    radial-gradient(2.5px 2.5px at 34% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 47% 88%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 56% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 64% 52%, #fff 50%, transparent 51%),
+    radial-gradient(3px 3px at 73% 24%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 81% 78%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 90% 40%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 96% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 4% 92%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 40% 58%, #fff 50%, transparent 51%);
+}
