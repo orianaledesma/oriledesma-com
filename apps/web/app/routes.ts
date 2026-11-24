@@ -12,5 +12,10 @@ export default [
     route("en-publico", "routes/public-numbers.tsx"),
     route("guia", "routes/guide.tsx"),
     route("sobre-mi", "routes/about.tsx"),
+    route("privacidad", "routes/privacy.tsx"),
+    route("terminos", "routes/terms.tsx"),
+    route("*", "routes/not-found.tsx"),
   ]),
+  // La página de links de las bios va sin header ni footer.
+  route("links", "routes/links.tsx"),
 ] satisfies RouteConfig;
