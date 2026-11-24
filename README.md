@@ -19,6 +19,8 @@ npm run dev
 
 No keys are needed in development: without them the API uses in-memory adapters and writes notifications to the log. Every variable is listed, with comments, in `apps/api/.env.example` and `apps/web/.env.example`.
 
+**Two ways to run the forms.** With `VITE_API_URL` set, the forms post to the API. Without it, they post straight to MailerLite forms, so the site can ship as a $0 static MVP with no backend. Each form only knows a lead `kind`; `features/leads/transport.ts` picks the transport. Adding the backend later means setting one variable, not touching components.
+
 | Command                                       | What it does                                                    |
 | --------------------------------------------- | --------------------------------------------------------------- |
 | `npm run dev`                                 | API and web with hot reload                                     |
@@ -124,6 +126,7 @@ _`/aprende`: filters are plain query parameters, read only after hydration so th
 - **`'unsafe-inline'` in the CSP `script-src`.** React Router hydrates with an inline context script. A nonce needs a server, which a static host doesn't have; generating hashes at build time is the next step.
 - **No database yet.** Leads go to MailerLite and inquiries go out by email. Postgres + Drizzle will come with the course platform, behind the same port/adapter boundary.
 - **Content as typed files, not a CMS.** It's validated by a test, so a typo in a level or pillar fails CI. When someone other than a developer needs to edit content, it can move to a headless CMS without changing components.
+- **MVP without a backend.** Production starts static-only: forms go to MailerLite and the seat count comes from config. The cost is no server-side validation or rate limiting (MailerLite's own protections apply) and a manual seat count. The API is fully built and tested; it's one environment variable away.
 - **Deliberately skipped:** real checkout (the provider isn't chosen yet), the Instagram and YouTube feeds (placeholders for now) and authentication.
 
 Code comments are in Spanish, the product's language; this README is in English for a wider audience.
@@ -133,9 +136,9 @@ Code comments are in Spanish, the product's language; this README is in English 
 - **Web → Cloudflare Pages.**
   - Build command: `npm run build -w @oriledesma/web`
   - Output directory: `apps/web/build/client`
-  - Environment variables: `VITE_API_URL`, `VITE_GA_MEASUREMENT_ID`
+  - Environment variables: `VITE_MAILERLITE_*` (MVP mode) or `VITE_API_URL` (with the API), plus `VITE_GA_MEASUREMENT_ID`
   - The build also generates `404.html` and `sitemap.xml`; old `.html` URLs redirect with a 301.
-- **API → Render** through the `render.yaml` Blueprint. Secrets are entered in the Render dashboard, not stored in the repo.
+- **API → Render** (optional, for when the backend goes live) through the `render.yaml` Blueprint, on the free plan. Secrets are entered in the Render dashboard, not stored in the repo.
 - **CI** (GitHub Actions) runs on every PR: lint, format, typecheck, unit tests, build, Conventional Commits, Playwright and Lighthouse.
 
 ## AI usage
