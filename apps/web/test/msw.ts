@@ -1,0 +1,21 @@
+import { API_ROUTES } from "@oriledesma/schemas";
+import { http, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
+import { API_URL } from "~/shared/api/client";
+
+export const api = (path: string) => `${API_URL}${path}`;
+
+/** Respuestas felices por defecto; cada test sobreescribe lo que necesita con server.use(). */
+export const handlers = [
+  http.post(api(API_ROUTES.newsletter), () => HttpResponse.json({ ok: true }, { status: 201 })),
+  http.post(api(API_ROUTES.guide), () => HttpResponse.json({ ok: true }, { status: 201 })),
+  http.post(api(API_ROUTES.implementation), () => HttpResponse.json({ ok: true }, { status: 201 })),
+  http.post(api(API_ROUTES.liveApplications), () =>
+    HttpResponse.json({ ok: true }, { status: 201 }),
+  ),
+  http.get(api(API_ROUTES.courseSeats), () =>
+    HttpResponse.json({ total: 20, sold: 8, simulated: false }),
+  ),
+];
+
+export const server = setupServer(...handlers);
