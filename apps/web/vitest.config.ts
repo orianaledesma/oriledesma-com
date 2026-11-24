@@ -9,6 +9,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./test/setup.ts"],
+    // Modo API por defecto; los tests del modo sin back lo apagan con vi.stubEnv.
+    env: { VITE_API_URL: "http://localhost:3001" },
     css: { modules: { classNameStrategy: "non-scoped" } },
     include: ["app/**/*.test.{ts,tsx}"],
     coverage: {
