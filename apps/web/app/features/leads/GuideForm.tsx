@@ -1,4 +1,4 @@
-import { API_ROUTES, guideRequest, type LeadSource } from "@oriledesma/schemas";
+import { guideRequest, type LeadSource } from "@oriledesma/schemas";
 import { track } from "~/features/analytics/analytics";
 import { Field, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
@@ -11,7 +11,7 @@ import { useLeadForm } from "./useLeadForm";
 export function GuideForm({ source }: { source: LeadSource }) {
   const form = useLeadForm({
     schema: guideRequest,
-    endpoint: API_ROUTES.guide,
+    kind: "guide",
     extra: { source },
     onSuccess: () => {
       track({ name: "email_capture_submit", params: { source } });
