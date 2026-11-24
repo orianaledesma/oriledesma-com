@@ -1,0 +1,33 @@
+.stats {
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .stats:not(.single) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stat {
+  padding-top: 22px;
+  border-top: 3px solid var(--color-celeste);
+}
+
+.value {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-celeste);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 9vw, 5.6rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.label {
+  font-size: 1.12rem;
+}

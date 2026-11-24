@@ -1,0 +1,43 @@
+.highlight {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 36px;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 60px);
+  border-radius: var(--radius-lg);
+}
+
+.highlight > * {
+  min-width: 0;
+}
+
+.highlight > :only-child {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 900px) {
+  .highlight {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+  }
+}
+
+.light {
+  background: var(--color-blanco);
+  box-shadow: var(--shadow-soft);
+}
+
+:global([data-surface="celeste"]) .light {
+  box-shadow: var(--shadow);
+}
+
+.noche {
+  box-shadow: var(--shadow);
+}
+
+.flat {
+  border: 1px solid var(--color-borde);
+  box-shadow: none;
+}
