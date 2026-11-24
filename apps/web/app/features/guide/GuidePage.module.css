@@ -1,0 +1,45 @@
+.logo {
+  width: 200px;
+  margin-bottom: 28px;
+}
+
+.formCard {
+  margin-top: var(--space-l);
+}
+
+.legal {
+  margin-top: 12px;
+}
+
+.daysTitle {
+  font-size: 1.4rem;
+}
+
+.days {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.days li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--color-blanco);
+  box-shadow: var(--shadow-soft);
+}
+
+.dayNumber {
+  padding: 4px 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-celeste);
+  color: var(--color-marino);
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-align: center;
+}
