@@ -4,7 +4,7 @@ services:
     name: oriledesma-api
     runtime: node
     region: frankfurt
-    plan: starter
+    plan: free
     branch: main
     # Se instalan también devDependencies: el build usa tsup.
     buildCommand: npm ci --include=dev && npm run build -w @oriledesma/api
