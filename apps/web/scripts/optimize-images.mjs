@@ -52,3 +52,28 @@ async function logos() {
 
 await photos();
 await logos();
+await ogImage();
+
+/** Imagen para compartir en redes (1200×630): fondo Noche con el logo. Provisoria hasta tener la de Canva. */
+async function ogImage() {
+  const logo = await sharp(path.join(logosDir, "logo-horizontal-fondo-oscuro.svg"), {
+    density: 300,
+  })
+    .resize({ width: 860 })
+    .png()
+    .toBuffer();
+  const background = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+      <defs><radialGradient id="g" cx="30%" cy="40%" r="80%">
+        <stop offset="0" stop-color="#2A3E66"/><stop offset="0.6" stop-color="#1B2A4A"/><stop offset="1" stop-color="#121D35"/>
+      </radialGradient></defs>
+      <rect width="1200" height="630" fill="url(#g)"/>
+      <rect y="606" width="1200" height="24" fill="#00CFFA"/>
+    </svg>`,
+  );
+  await sharp(background)
+    .composite([{ input: logo, gravity: "center" }])
+    .png({ compressionLevel: 9 })
+    .toFile(path.join(root, "public/og-oriledesma.png"));
+  console.log("✓ og-oriledesma.png");
+}
