@@ -57,11 +57,11 @@ export default tseslint.config(
     ...jsxA11y.flatConfigs.strict,
   },
   {
-    files: ["apps/api/**/*.ts", "**/*.config.{js,ts}", "scripts/**/*"],
+    files: ["apps/api/**/*.ts", "**/*.config.{js,ts}", "**/scripts/**/*"],
     languageOptions: { globals: globals.node },
   },
   {
-    files: ["**/*.js"],
+    files: ["**/*.{js,mjs}"],
     ...tseslint.configs.disableTypeChecked,
   },
   prettier,
