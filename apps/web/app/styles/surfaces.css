@@ -76,7 +76,7 @@
   --c-pending-bg: rgb(255 255 255 / 0.55);
   --c-pending-border: rgb(27 42 74 / 0.4);
   --c-raised-bg: var(--color-blanco);
-  --c-raised-shadow: none;
+  --c-raised-shadow: var(--shadow-soft);
   --c-raised-border: transparent;
 }
 
@@ -110,7 +110,7 @@
   --c-input-border: rgb(255 255 255 / 0.4);
   --c-error: var(--color-miel);
   --c-raised-bg: var(--color-blanco);
-  --c-raised-shadow: var(--shadow);
+  --c-raised-shadow: var(--shadow-soft);
   --c-raised-border: transparent;
 }
 
