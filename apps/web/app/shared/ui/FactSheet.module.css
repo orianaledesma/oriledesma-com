@@ -1,0 +1,27 @@
+.sheet {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-rule);
+  font-size: 1rem;
+}
+
+.label {
+  padding-top: 3px;
+  color: var(--c-label);
+  font-weight: 600;
+  font-size: var(--font-size-label);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.value {
+  margin: 0;
+}
