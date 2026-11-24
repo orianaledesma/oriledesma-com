@@ -46,7 +46,9 @@ Los datos pendientes del sitio se ven en pantalla como `[texto entre corchetes]`
 ### Render: API · Ori + Dev
 
 - [ ] New → Blueprint → elegir el repo. Toma `render.yaml`.
-- [ ] Elegir plan. Recomiendo **Starter**: el gratis se duerme y el primer envío de un formulario tardaría unos 50 s.
+- [ ] Plan **Free** (sin tarjeta). Si el Blueprint igual pide tarjeta, crear el servicio a mano: **New + → Web Service** con los mismos datos de `render.yaml`.
+- [ ] Crear un monitor gratis en **UptimeRobot** (HTTP(s), cada 10 min) sobre `/health`: mantiene despierta la instancia gratis y avisa por email si la API se cae.
+- [ ] Cuando haya tráfico real, pasar a **Starter** (US$7/mes, no se duerme): cambiar `plan` en `render.yaml` o desde el panel.
 - [ ] Cargar los secretos en el dashboard: `MAILERLITE_API_KEY`, `MAILERLITE_GROUP_NEWSLETTER`, `MAILERLITE_GROUP_GUIDE` y `RESEND_API_KEY`.
 - [ ] Agregar el custom domain `api.oriledesma.com`.
 - [ ] Probar que `https://api.oriledesma.com/health` devuelve `{"status":"ok"}`.
@@ -131,7 +133,7 @@ Sigue el mismo procedimiento de `docs/ANALYTICS_SETUP.md` de Dev Studio.
 - [ ] Textos legales cargados, sin `noindex`.
 - [ ] Antispam en los formularios: campo honeypot o Cloudflare Turnstile, además del rate limit que ya tiene la API.
 - [ ] Monitoreo:
-  - Uptime de `/health`, por ejemplo con Better Stack o UptimeRobot.
+  - Uptime de `/health`: cubierto por el monitor de UptimeRobot (bloque de Render).
   - Errores del front, por ejemplo con Sentry.
 
 **Recomendado, puede ir después:**
