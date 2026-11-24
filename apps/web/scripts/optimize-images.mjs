@@ -26,8 +26,14 @@ async function photos() {
     const input = path.join(photosIn, `${name}.webp`);
     for (const width of widths) {
       const base = sharp(input).resize({ width, withoutEnlargement: true });
-      await base.clone().avif({ quality: 55, effort: 6 }).toFile(path.join(photosOut, `${name}-${width}.avif`));
-      await base.clone().webp({ quality: 78, alphaQuality: 90 }).toFile(path.join(photosOut, `${name}-${width}.webp`));
+      await base
+        .clone()
+        .avif({ quality: 55, effort: 6 })
+        .toFile(path.join(photosOut, `${name}-${width}.avif`));
+      await base
+        .clone()
+        .webp({ quality: 78, alphaQuality: 90 })
+        .toFile(path.join(photosOut, `${name}-${width}.webp`));
       console.log(`✓ ${name} @${width}w`);
     }
   }
