@@ -1,0 +1,55 @@
+.arch {
+  position: relative;
+  width: min(100%, 420px);
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.sm {
+  width: min(100%, 340px);
+}
+
+.shape {
+  position: relative;
+  aspect-ratio: 415 / 584;
+  overflow: hidden;
+  border-radius: 999px 999px 22px 22px;
+  background: var(--color-celeste);
+}
+
+.symbol {
+  position: absolute;
+  left: 65%;
+  top: 28%;
+  width: 31%;
+  max-width: none;
+  opacity: 0.22;
+}
+
+.photo {
+  position: absolute;
+  left: -3.6%;
+  top: -1%;
+  width: 105.3%;
+  max-width: none;
+  height: auto;
+}
+
+.caption {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-marino);
+  color: var(--color-blanco);
+  box-shadow:
+    0 0 0 2px var(--color-blanco),
+    var(--shadow);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
