@@ -8,5 +8,6 @@ export default [
     route("implementacion", "routes/implementation.tsx"),
     route("en/implementation", "routes/implementation.en.tsx"),
     route("vivos", "routes/lives.tsx"),
+    route("aprende", "routes/learn.tsx"),
   ]),
 ] satisfies RouteConfig;
