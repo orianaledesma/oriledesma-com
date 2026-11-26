@@ -36,4 +36,11 @@ export const COURSE = {
   lessons: 7,
 } as const;
 
+/**
+ * Guía "Tus primeros 7 días con IA" (7 videos, uno por día, por email).
+ * Mientras `available` sea false, el formulario funciona como lista de espera.
+ * Para lanzarla: pasar a true, activar la automatización de MailerLite y deployar.
+ */
+export const GUIDE = { available: false } as const;
+
 export const LIVE_PLATFORMS = "YouTube, Twitch y Kick";
