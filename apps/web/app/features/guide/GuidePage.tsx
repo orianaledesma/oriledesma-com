@@ -1,5 +1,6 @@
 import logoVertical from "~/assets/logo/logo-vertical-fondo-claro.svg";
 import { GuideForm } from "~/features/leads/GuideForm";
+import { guideCopy } from "./copy";
 import { Card } from "~/shared/ui/Card";
 import { Container } from "~/shared/ui/Container";
 import { HeroGrid } from "~/shared/ui/Layout";
@@ -11,26 +12,21 @@ import styles from "./GuidePage.module.css";
 const DAYS = Array.from({ length: 7 }, (_, i) => i + 1);
 
 export function GuidePage() {
+  const copy = guideCopy();
   return (
     <Section variant="hero" surface="celeste" labelledBy="guia-h1">
       <Container>
         <HeroGrid alignStart>
           <div>
             <img className={styles.logo} src={logoVertical} alt="" width="200" height="151" />
-            <Pill block>Guía gratis</Pill>
+            <Pill block>{copy.pill}</Pill>
             <h1 id="guia-h1">
               Tus primeros <Accent>7 días</Accent> con IA
             </h1>
-            <Lead>
-              Un paso por día para empezar a usar la IA en tu negocio, sin saber de tecnología. Te
-              llega por email.
-            </Lead>
+            <Lead>{copy.lead}</Lead>
             <Card as="div" className={styles.formCard}>
               <GuideForm source="guide-page" />
-              <LegalNote className={styles.legal}>
-                Te llega la guía y, después, un email por semana con lo que voy probando. Podés
-                darte de baja cuando quieras.
-              </LegalNote>
+              <LegalNote className={styles.legal}>{copy.legal}</LegalNote>
             </Card>
           </div>
           <div>

@@ -1,5 +1,6 @@
 import { guideRequest, type LeadSource } from "@oriledesma/schemas";
 import { track } from "~/features/analytics/analytics";
+import { guideCopy } from "~/features/guide/copy";
 import { Field, TextInput } from "~/shared/forms/Field";
 import { FormStatus } from "~/shared/forms/FormStatus";
 import { cx } from "~/shared/lib/cx";
@@ -56,7 +57,7 @@ export function GuideForm({ source }: { source: LeadSource }) {
         <SubmitButton pending={form.isPending}>Quiero la guía</SubmitButton>
       </fieldset>
       {form.isSuccess ? (
-        <FormStatus status="success" message="¡Listo! Te mandé la guía a tu email." />
+        <FormStatus status="success" message={guideCopy().success} />
       ) : form.failureMessage ? (
         <FormStatus status="error" message={form.failureMessage} />
       ) : null}
