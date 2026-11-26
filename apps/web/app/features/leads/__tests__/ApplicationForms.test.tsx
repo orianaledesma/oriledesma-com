@@ -82,3 +82,18 @@ describe("LiveApplicationForm", () => {
     expect(await axe(container)).toHaveNoViolations();
   });
 });
+
+describe("GuideForm while the guide is not ready", () => {
+  it("confirms a waitlist signup without promising the guide", async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<GuideForm source="guide-page" />);
+
+    await user.type(screen.getByLabelText("Tu nombre"), "Ana");
+    await user.type(screen.getByLabelText("Tu email"), "ana@example.com");
+    await user.click(screen.getByRole("button", { name: "Quiero la guía" }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "¡Listo! Te aviso por email apenas esté la guía.",
+    );
+  });
+});
