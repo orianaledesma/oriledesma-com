@@ -17,6 +17,7 @@ test-results/
 .env
 .env.*
 !.env.example
+!.env.development
 
 # OS / editors
 .DS_Store

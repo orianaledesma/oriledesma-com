@@ -1,9 +1,10 @@
 import { API_ROUTES } from "@oriledesma/schemas";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
-import { API_URL } from "~/shared/api/client";
 
-export const api = (path: string) => `${API_URL}${path}`;
+/** Los tests corren en modo API por defecto (ver vitest.config.ts). */
+export const TEST_API_URL = "http://localhost:3001";
+export const api = (path: string) => `${TEST_API_URL}${path}`;
 
 /** Respuestas felices por defecto; cada test sobreescribe lo que necesita con server.use(). */
 export const handlers = [

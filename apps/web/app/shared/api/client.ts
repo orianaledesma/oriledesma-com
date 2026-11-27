@@ -1,8 +1,11 @@
 import { apiError } from "@oriledesma/schemas";
 
-/** URL de la API. En build se inyecta con VITE_API_URL; en desarrollo apunta a la API local. */
-export const API_URL: string =
-  (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:3001";
+/**
+ * URL de la API propia, o `undefined` si el sitio corre sin back (MVP: formularios a MailerLite).
+ * Se lee en cada llamada para que el modo se pueda cambiar por entorno (y en tests).
+ */
+export const getApiUrl = (): string | undefined =>
+  (import.meta.env.VITE_API_URL as string | undefined) || undefined;
 
 export type ApiFailure =
   | { kind: "validation"; fields: Record<string, string> }
@@ -30,11 +33,13 @@ async function toFailure(response: Response): Promise<ApiFailure> {
 }
 
 async function request<T>(path: string, init: RequestInit): Promise<T> {
+  const apiUrl = getApiUrl();
+  if (!apiUrl) throw new Error("VITE_API_URL is not set: there is no API to call");
   const headers = new Headers(init.headers);
   headers.set("Accept", "application/json");
   let response: Response;
   try {
-    response = await fetch(`${API_URL}${path}`, { ...init, headers });
+    response = await fetch(`${apiUrl}${path}`, { ...init, headers });
   } catch {
     throw new ApiRequestError({ kind: "network" });
   }

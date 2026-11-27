@@ -1,4 +1,4 @@
-import { API_ROUTES, IMPLEMENTATION_TIMEFRAMES, implementationInquiry } from "@oriledesma/schemas";
+import { IMPLEMENTATION_TIMEFRAMES, implementationInquiry } from "@oriledesma/schemas";
 import { useLocale } from "~/i18n";
 import { track } from "~/features/analytics/analytics";
 import { Field, Select, TextArea, TextInput } from "~/shared/forms/Field";
@@ -14,7 +14,7 @@ export function ImplementationForm() {
   const copy = IMPLEMENTATION_COPY[locale];
   const form = useLeadForm({
     schema: implementationInquiry,
-    endpoint: API_ROUTES.implementation,
+    kind: "implementation",
     extra: { locale },
     onSuccess: () => {
       track({ name: "contact_form_submit", params: { locale } });

@@ -3,11 +3,13 @@ import { useMutation } from "@tanstack/react-query";
 import { type SubmitEvent, useCallback, useState } from "react";
 import type { z } from "zod";
 import { useT } from "~/i18n";
-import { ApiRequestError, postJson } from "~/shared/api/client";
+import { ApiRequestError } from "~/shared/api/client";
+import { type LeadKind, type LeadPayloads, submitLead } from "./transport";
 
-type Options<S extends z.ZodType> = {
+type Options<K extends LeadKind, S extends z.ZodType<LeadPayloads[K]>> = {
+  /** Qué formulario es: decide adónde se envía (API o MailerLite). */
+  kind: K;
   schema: S;
-  endpoint: string;
   /** Campos que no vienen del formulario (origen, idioma). */
   extra?: Record<string, string>;
   /** Recibe lo que se envió (ya validado), p. ej. para analytics. */
@@ -24,20 +26,20 @@ const formValues = (form: HTMLFormElement): Record<string, string> => {
 
 /**
  * Lógica compartida de los formularios de leads:
- * valida en el cliente con el MISMO esquema Zod que la API, envía con una mutación
+ * valida en el cliente con el MISMO esquema Zod que la API, envía (a la API o a MailerLite) con una mutación
  * de TanStack Query y traduce los errores (de campo, de red, de límite) al idioma activo.
  */
-export function useLeadForm<S extends z.ZodType>({
+export function useLeadForm<K extends LeadKind, S extends z.ZodType<LeadPayloads[K]>>({
+  kind,
   schema,
-  endpoint,
   extra,
   onSuccess,
-}: Options<S>) {
+}: Options<K, S>) {
   const t = useT();
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const mutation = useMutation({
-    mutationFn: (payload: z.output<S>) => postJson<{ ok: true }>(endpoint, payload),
+    mutationFn: (payload: z.output<S>) => submitLead(kind, payload),
     onSuccess: (_data, payload) => {
       onSuccess?.(payload);
     },

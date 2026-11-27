@@ -5,6 +5,7 @@ import { WORKSHOPS } from "~/content/workshops";
 import { PATHS } from "~/config/routes";
 import { COURSE, LIVE_PLATFORMS, SOCIAL } from "~/config/site";
 import { CourseSeatsMeter } from "~/features/course/CourseSeatsMeter";
+import { guideCopy } from "~/features/guide/copy";
 import { GuideForm } from "~/features/leads/GuideForm";
 import { PhotoArch } from "~/shared/media/PhotoArch";
 import { ProfilePhoto } from "~/shared/media/ProfilePhoto";
@@ -324,21 +325,16 @@ export function HomePage() {
           <Highlight>
             <div>
               <Icon name="book" />
-              <Pill>Guía gratis</Pill>
+              <Pill>{guideCopy().pill}</Pill>
               <h2 id="guia-titulo">
                 Tus primeros <Accent>7 días</Accent> con IA
               </h2>
-              <Lead>
-                Un paso por día para empezar a usar la IA en tu negocio, sin saber de tecnología.
-              </Lead>
+              <Lead>{guideCopy().lead}</Lead>
               <ArrowLink href={PATHS.guide}>Ver qué trae cada día</ArrowLink>
             </div>
             <div>
               <GuideForm source="home" />
-              <LegalNote className={styles.legalSpaced}>
-                Te llega la guía y, después, un email por semana con lo que voy probando. Podés
-                darte de baja cuando quieras.
-              </LegalNote>
+              <LegalNote className={styles.legalSpaced}>{guideCopy().legal}</LegalNote>
             </div>
           </Highlight>
         </Container>

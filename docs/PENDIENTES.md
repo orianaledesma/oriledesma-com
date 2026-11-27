@@ -27,8 +27,7 @@ Los datos pendientes del sitio se ven en pantalla como `[texto entre corchetes]`
 - [ ] Si se queda en el registrador actual, cargar estos registros:
   - `oriledesma.com` → el registro que indique Cloudflare Pages al agregar el dominio (CNAME flattening o ALIAS).
   - `www` → CNAME a `<proyecto>.pages.dev`, con redirect a la raíz.
-  - `api` → CNAME al host que indique Render (`oriledesma-api.onrender.com`).
-  - Registros SPF, DKIM y DMARC que pida Resend (ver el bloque de email).
+  - `api` → CNAME a Render: solo cuando se sume la API (ver "Más adelante").
 
 ### Cloudflare Pages: web · Ori + Dev
 
@@ -36,34 +35,49 @@ Los datos pendientes del sitio se ven en pantalla como `[texto entre corchetes]`
 - [ ] Configuración del build:
   - Build command: `npm run build -w @oriledesma/web`
   - Output directory: `apps/web/build/client`
-  - Variable `NODE_VERSION=22`
-- [ ] Variables de entorno:
-  - `VITE_API_URL=https://api.oriledesma.com`
+  - Node: lo toma de `.nvmrc` (22), no hace falta `NODE_VERSION`.
+- [ ] Variables de entorno (tipo Text, en Production y Preview):
+  - **No cargar `VITE_API_URL`** mientras el MVP corra sin back.
+  - `VITE_MAILERLITE_ACCOUNT_ID` y los cuatro `VITE_MAILERLITE_FORM_*` (ver el bloque de MailerLite).
   - `VITE_GA_MEASUREMENT_ID`: el ID de la property de GA4, cuando exista.
 - [ ] Agregar el dominio `oriledesma.com` y `www`.
 - [ ] Verificar los headers de seguridad (`_headers`) y los redirects de las URLs `.html` viejas (`_redirects`).
 
-### Render: API · Ori + Dev
+### MailerLite: todos los formularios (MVP sin back) · Ori
 
-- [ ] New → Blueprint → elegir el repo. Toma `render.yaml`.
-- [ ] Elegir plan. Recomiendo **Starter**: el gratis se duerme y el primer envío de un formulario tardaría unos 50 s.
-- [ ] Cargar los secretos en el dashboard: `MAILERLITE_API_KEY`, `MAILERLITE_GROUP_NEWSLETTER`, `MAILERLITE_GROUP_GUIDE` y `RESEND_API_KEY`.
-- [ ] Agregar el custom domain `api.oriledesma.com`.
-- [ ] Probar que `https://api.oriledesma.com/health` devuelve `{"status":"ok"}`.
-
-### Email marketing: MailerLite · Ori
-
-- [ ] Crear la cuenta y generar la API key (Integrations → API).
-- [ ] Crear dos grupos, **Newsletter** y **Guía 7 días**, y copiar sus IDs a Render.
-- [ ] Crear la automatización: cuando alguien entra al grupo **Guía 7 días**, se le envía la guía.
-- [ ] Activar double opt-in (recomendado por RGPD).
+- [ ] Crear la cuenta (plan gratis).
+- [ ] **Campos personalizados** (Subscribers → Fields), todos de tipo texto, con estas claves exactas: `origen`, `proceso`, `herramientas`, `cuando`, `idioma`, `negocio`, `rubro`, `web`, `pais`.
+- [ ] **Cuatro grupos:** Newsletter, Guía 7 días, Implementación y Postulaciones a vivos. Las consultas y las postulaciones **no** van a Newsletter: nadie que te escribió por un proyecto recibe marketing sin pedirlo.
+- [ ] **Cuatro formularios embebidos** (Forms → Embedded forms), uno por grupo:
+  - Newsletter: campo email.
+  - Guía: email y name.
+  - Implementación: email, name, proceso, herramientas, cuando e idioma.
+  - Vivos: email, name, negocio, rubro, web, pais y proceso.
+  - En cada uno, el campo `origen` (si aplica) y los demás como ocultos u opcionales.
+- [ ] Copiar los IDs del código de inserción de cada formulario. Están en la URL `https://assets.mailerlite.com/jsonp/<ACCOUNT_ID>/forms/<FORM_ID>/subscribe`. Cargarlos en Cloudflare Pages:
+  - `VITE_MAILERLITE_ACCOUNT_ID`
+  - `VITE_MAILERLITE_FORM_NEWSLETTER`, `VITE_MAILERLITE_FORM_GUIDE`, `VITE_MAILERLITE_FORM_IMPLEMENTATION` y `VITE_MAILERLITE_FORM_LIVES`
+- [ ] Double opt-in **activado** en Newsletter y Guía (RGPD). En Implementación y Vivos, desactivado: son consultas, no suscripciones.
+- [ ] Automatización: cuando alguien entra a **Guía 7 días**, se le envía la guía.
+- [ ] Automatización (opcional): cuando alguien entra a **Implementación** o **Postulaciones a vivos**, mandarte un aviso por email.
 - [ ] Escribir y diseñar la guía "Tus primeros 7 días con IA".
+- [ ] Probar cada formulario del sitio y ver que el contacto aparezca en su grupo con los campos completos.
 
-### Avisos internos: Resend · Ori
+### Cupos del curso (sin back) · Ori
 
-- [ ] Crear la cuenta y verificar el dominio `oriledesma.com` (registros SPF y DKIM en el DNS).
-- [ ] Generar la API key y cargarla en Render.
-- [ ] Revisar `NOTIFY_FROM` (por defecto `web@oriledesma.com`) y `NOTIFY_TO` (por defecto `oriledesmaia@gmail.com`).
+- [ ] Con cada venta, actualizar `COURSE.seatsSold` en `apps/web/app/config/site.ts` y mergear: el contador se actualiza con el deploy.
+
+### Más adelante: sumar la API propia · Ori + Dev
+
+Cuando el MVP necesite validación en servidor, avisos por email propios o cupos automáticos. Todo el código ya está hecho y testeado.
+
+- [ ] Render en plan **Free** con el Blueprint (`render.yaml`) o creando a mano **New + → Web Service**.
+- [ ] Monitor gratis en **UptimeRobot** sobre `/health` cada 10 min: mantiene despierta la instancia y avisa si se cae.
+- [ ] Secretos en Render: `MAILERLITE_API_KEY`, `MAILERLITE_GROUP_NEWSLETTER`, `MAILERLITE_GROUP_GUIDE` y `RESEND_API_KEY`.
+- [ ] Resend: verificar el dominio (SPF y DKIM) y generar la API key.
+- [ ] Custom domain `api.oriledesma.com` y probar `/health`.
+- [ ] En Cloudflare Pages, cargar `VITE_API_URL=https://api.oriledesma.com` y redeployar: los formularios pasan solos a la API.
+- [ ] Con tráfico real, pasar Render a **Starter** (US$7/mes, no se duerme).
 
 ### Analytics: GA4 · Ori
 
@@ -91,7 +105,7 @@ Sigue el mismo procedimiento de `docs/ANALYTICS_SETUP.md` de Dev Studio.
 - [ ] Texto de **Privacidad (RGPD)**:
   - Quién es la responsable del tratamiento.
   - Qué datos se piden y para qué.
-  - Proveedores que procesan datos: MailerLite, Resend, Google Analytics, Render y Cloudflare.
+  - Proveedores que procesan datos: MailerLite, Google Analytics y Cloudflare (y Render y Resend cuando se sume la API).
   - Plazos de conservación y derechos (acceso, rectificación, supresión).
   - Uso de cookies.
 - [ ] Texto de **Términos**, incluida la política de devolución del curso.
@@ -129,9 +143,9 @@ Sigue el mismo procedimiento de `docs/ANALYTICS_SETUP.md` de Dev Studio.
 
 - [ ] Checkout real y cupos desde el proveedor de pagos (cuando esté elegido).
 - [ ] Textos legales cargados, sin `noindex`.
-- [ ] Antispam en los formularios: campo honeypot o Cloudflare Turnstile, además del rate limit que ya tiene la API.
+- [ ] Antispam en los formularios: campo honeypot o Cloudflare Turnstile (en el MVP se suma a las protecciones de MailerLite).
 - [ ] Monitoreo:
-  - Uptime de `/health`, por ejemplo con Better Stack o UptimeRobot.
+  - Uptime de `/health`, cuando se sume la API: monitor de UptimeRobot.
   - Errores del front, por ejemplo con Sentry.
 
 **Recomendado, puede ir después:**
@@ -149,7 +163,7 @@ Sigue el mismo procedimiento de `docs/ANALYTICS_SETUP.md` de Dev Studio.
 - [ ] Enviar cada formulario en producción y confirmar:
   - el alta en MailerLite;
   - que llega la guía;
-  - que llegan los avisos de implementación y vivos.
+  - que las consultas de implementación y vivos aparezcan en su grupo.
 - [ ] Ver los eventos en tiempo real de GA4, después de aceptar las cookies.
 - [ ] Correr Lighthouse sobre `https://oriledesma.com`.
 - [ ] Cargar `sitemap.xml` en Search Console.

@@ -1,10 +1,13 @@
 # Render Blueprint de la API (render.com → New → Blueprint → este repo).
+# Plan Free: se duerme tras 15 min sin tráfico. Un monitor externo (UptimeRobot) llama a
+# /health cada 10 min y la mantiene despierta; 750 h gratis/mes cubren el mes entero.
+# Para producción con tráfico real: cambiar plan a "starter" (US$7/mes, no se duerme).
 services:
   - type: web
     name: oriledesma-api
     runtime: node
     region: frankfurt
-    plan: starter
+    plan: free
     branch: main
     # Se instalan también devDependencies: el build usa tsup.
     buildCommand: npm ci --include=dev && npm run build -w @oriledesma/api
